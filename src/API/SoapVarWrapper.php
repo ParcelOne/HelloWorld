@@ -1,5 +1,5 @@
 <?php
-namespace ParcelOneShipping\API;
+namespace HelloWorld\API;
 /**
  * Possibility to access SoapHeader over pluginApp()
  *

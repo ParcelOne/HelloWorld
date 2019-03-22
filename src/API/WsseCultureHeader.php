@@ -1,12 +1,12 @@
 <?php
 
-namespace ParcelOneShipping\API;
+namespace HelloWorld\API;
 
 /**
  * Possibility to access SoapHeader over pluginApp()
  *
  * Class WsseCultureHeader
- * @package ParcelOneShipping\API
+ * @package HelloWorld\API
  */
  class WsseCultureHeader extends \SoapHeader {
 	function __construct($culture) {

@@ -20,7 +20,7 @@ use HelloWorld\API\getProfiles;
  * Class ShippingSettingsService
  *
  * @author jsternsdorff
- * @package ParcelOneShipping\Services
+ * @package HelloWorld\Services
  */
 class ShippingSettingsService
 {

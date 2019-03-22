@@ -10,7 +10,7 @@ use Plenty\Plugin\Http\Request;
 /**
  * Class ShippingSettingsController
  * @author jsternsdorff
- * @package ParcelOneShipping\Controllers
+ * @package HelloWorld\Controllers
  */
 class ShippingSettingsController extends Controller
 {

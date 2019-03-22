@@ -1,17 +1,17 @@
 <?php
 
-namespace ParcelOneShipping\API;
+namespace HelloWorld\API;
 use SoapVar;
-use  ParcelOneShipping\API\AuthentificationToken;
-use  ParcelOneShipping\API\AuthentificationType;
-use  ParcelOneShipping\API\standardClass;
-use  ParcelOneShipping\API\SoapVarWrapper;
-use  ParcelOneShipping\API\SoapHeaderWrapper;
+use  HelloWorld\API\AuthentificationToken;
+use  HelloWorld\API\AuthentificationType;
+use  HelloWorld\API\standardClass;
+use  HelloWorld\API\SoapVarWrapper;
+use  HelloWorld\API\SoapHeaderWrapper;
 /**
  * Possibility to access SoapHeader over pluginApp()
  *
  * Class WsseAuthHeader
- * @package ParcelOneShipping\API
+ * @package HelloWorld\API
  */
  class WsseAuthHeader extends \SoapHeader {
 	private $wss_ns = 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd';

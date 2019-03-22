@@ -1,12 +1,12 @@
 <?php
 
-namespace ParcelOneShipping\API;
+namespace HelloWorld\API;
 
 /**
  * Possibility to access SoapHeader over pluginApp()
  *
  * Class WsseApiKeyHeader
- * @package ParcelOneShipping\API
+ * @package HelloWorld\API
  */
 class WsseApiKeyHeader extends \SoapHeader{
 	public function __construct() {

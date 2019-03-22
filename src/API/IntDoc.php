@@ -1,6 +1,6 @@
 <?php
 
-namespace ParcelOneShipping\API;
+namespace HelloWorld\API;
 
 /**
  * IntDoc

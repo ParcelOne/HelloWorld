@@ -1,12 +1,12 @@
 <?php
 
-namespace ParcelOneShipping\Services;
+namespace HelloWorld\Services;
 
 use Plenty\Modules\Frontend\Session\Storage\Contracts\FrontendSessionStorageFactoryContract;
 
 /**
  * Class SessionStorageService
- * @package ParcelOneShipping\Services
+ * @package HelloWorld\Services
  */
 class SessionStorageService
 {

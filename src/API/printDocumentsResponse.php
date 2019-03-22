@@ -1,6 +1,6 @@
 <?php
 
-namespace ParcelOneShipping\AP;
+namespace HelloWorld\AP;
 
 /**
  * printDocumentsResponse
