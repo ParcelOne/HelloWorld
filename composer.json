@@ -1,0 +1,19 @@
+{
+    "name": "plentymarkets/plugin-hello-world",
+    "type": "project",
+    "description": "Creates an empty frontend plugin for plentymarkets plugin development",
+    "license": "AGPL-3.0",
+    "authors":
+    [
+        {
+            "name": "plentymarkets",
+            "email": "sales@plentymarkets.com",
+            "homepage": "https://www.plentymarkets.eu",
+            "role": "Developer"
+        }
+    ],
+    "require":
+    {
+        "php": "^5.5 || ^7.0"
+    }
+}
