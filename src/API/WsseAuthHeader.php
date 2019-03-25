@@ -15,21 +15,21 @@ use  HelloWorld\API\SoapHeaderWrapper;
  * @package HelloWorld\API
  */
  class WsseAuthHeader extends \SoapHeader {
-	public $wss_ns = 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd';
-	public $wsu_ns = 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd';
+	private $wss_ns = 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd';
+	private $wsu_ns = 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd';
 	public function __construct($user, $pass, $nspace) {
-      $auth = pluginApp(standardClass::class,[]);
-      $auth = (object)array(
-        'Username' => pluginApp(SoapVarWrapper::class, [$user, XSD_STRING, "string", $this->wss_ns, NULL, $this->wss_ns]),
-        'Password' => pluginApp(SoapVarWrapper::class, [$pass, XSD_STRING, "string", $this->wss_ns, NULL, $this->wss_ns])
-      );
 
-      $UsernameToken = pluginApp(UsernameToken::class,[ pluginApp(SoapVarWrapper::class, [$auth, SOAP_ENC_OBJECT, "string", $this->wss_ns, 'UsernameToken', $this->wss_ns]) ]);
+    $xml = '
+<wsse:Security SOAP-ENV:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+   <wsse:UsernameToken>
+       <wsse:Username>'.$user.'</wsse:Username>
+       <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">'.$pass.'</wsse:Password>
+   </wsse:UsernameToken>
+</wsse:Security>
+';
 
-      $security_sv = pluginApp(SoapVarWrapper::class, [
-        pluginApp(SoapVarWrapper::class, [$UsernameToken, SOAP_ENC_OBJECT, NULL, $this->wss_ns, 'UsernameToken', $this->wss_ns]),
-      SOAP_ENC_OBJECT, NULL, $this->wss_ns, 'Security', $this->wss_ns]);
-	    parent::__construct($this->wss_ns, 'Security', $security_sv, false);
+      $xml2Return = pluginApp(SoapVarWrapper::class, [$xml, XSD_ANYXML, NULL, NULL, NULL, NULL])
+	    parent::__construct($this->wss_ns, 'Security', $xml2Return, false);
 	}
 }
 ?>
