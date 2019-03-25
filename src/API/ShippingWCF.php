@@ -120,6 +120,7 @@ class ShippingWCF extends \SoapClient
      ,'WsseApiKeyHeader' => 'HelloWorld\API\WsseApiKeyHeader'
      ,'WsseAuthHeader' => 'HelloWorld\API\WsseAuthHeader'
      ,'WsseCultureHeader' => 'HelloWorld\API\WsseCultureHeader'
+     ,'UsernameToken' => 'HelloWorld\API\UsernameToken'
    );
 
    /**
