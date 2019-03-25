@@ -183,30 +183,6 @@ class ShippingWCF extends \SoapClient
    }
 
    /**
-    * Creates shipments.
-    *
-    * @param CreateShipmentOrderRequest $part1
-    * @access public
-    * @return CreateShipmentOrderResponse
-    */
-   public function registerShipments(registerShipments $part1)
-   {
-       return parent::__soapCall('registerShipments', array($part1));
-   }
-
-   /**
-    * Cancel/Void shipments.
-    *
-    * @param ArrayOfidentifyShipments $part1
-    * @access public
-    * @return ArrayOfShipmentActionResult
-    */
-   public function voidShipments(voidShipments $part1)
-   {
-       return parent::__soapCall('voidShipments', array($part1));
-   }
-
-   /**
     * getProfiles
     *
     * @param ArrayOfidentifyShipments $part1
