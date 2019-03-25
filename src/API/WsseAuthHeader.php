@@ -15,8 +15,8 @@ use  HelloWorld\API\SoapHeaderWrapper;
  * @package HelloWorld\API
  */
  class WsseAuthHeader extends \SoapHeader {
-	private $wss_ns = 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd';
-	private $wsu_ns = 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd';
+	public $wss_ns = 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd';
+	public $wsu_ns = 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd';
 	public function __construct($user, $pass, $nspace) {
       $auth = pluginApp(standardClass::class,[]);
       $auth = (object)array(
