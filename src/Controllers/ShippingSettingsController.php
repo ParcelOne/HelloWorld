@@ -33,7 +33,7 @@ class ShippingSettingsController extends Controller
 	 */
 	public function loadAll()
 	{
-		$shippingSettings = $this->settingsService->loadAll();
+		$shippingSettings = $this->settingsService->getServices();
 		return json_encode($shippingSettings);
 	}
 }

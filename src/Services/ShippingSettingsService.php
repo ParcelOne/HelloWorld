@@ -61,16 +61,11 @@ class ShippingSettingsService
      * @param ParcelServicePresetRepositoryContract $parcelServicePresetRepositoryContract
      * @param CachingRepository $cachingRepository
      */
-    public function __construct(DynamoDbRepositoryContract $dataBase,
-        ParcelServiceRegionRepositoryContract $parcelServiceRegionRepositoryContract,
-        ParcelServicePresetRepositoryContract $parcelServicePresetRepositoryContract,
+    public function __construct(
         CachingRepository $cachingRepository,
         ConfigRepository $config,
         CountryRepositoryContract $countryRepositoryContract)
     {
-        $this->dataBase = $dataBase;
-        $this->parcelServiceRegionRepositoryContract = $parcelServiceRegionRepositoryContract;
-        $this->parcelServicePresetRepositoryContract = $parcelServicePresetRepositoryContract;
         $this->cachingRepository = $cachingRepository;
 		    $this->config = $config;
         $this->countryRepositoryContract = $countryRepositoryContract;
@@ -113,7 +108,7 @@ class ShippingSettingsService
   		$lastResponse = $this->shippingwcf->getLastResponse();
 
   		$this->getLogger(__METHOD__)
-  			->info(PluginConstants::PLUGIN_NAME.'::general.requestAndResponse',
+  			->info('HelloWorld'.'::general.requestAndResponse',
   				   ['Request' => $lastRequest,
   					   'Response' => str_replace(["\n", "\\"],'',$lastResponse)]);
   	}

@@ -14,7 +14,7 @@ class HelloWorldRouteServiceProvider extends RouteServiceProvider
 	/**
 	 * @param Router $router
 	 */
-	public function map(Router $router)
+	public function map(Router $router, ApiRouter $apiRouter)
 	{
 
 		/*
