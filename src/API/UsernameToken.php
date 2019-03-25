@@ -2,7 +2,7 @@
 
 namespace HelloWorld\API;
 
-class AuthentificationToken
+class  UsernameToken
 {
     /**
      * @var UsernameToken $UsernameToken
