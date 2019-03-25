@@ -2,8 +2,9 @@
 
 namespace HelloWorld\API;
 use SoapVar;
-use  HelloWorld\API\AuthentificationToken;
+use  HelloWorld\API\UsernameToken;
 use  HelloWorld\API\AuthentificationType;
+
 use  HelloWorld\API\standardClass;
 use  HelloWorld\API\SoapVarWrapper;
 use  HelloWorld\API\SoapHeaderWrapper;
@@ -23,13 +24,10 @@ use  HelloWorld\API\SoapHeaderWrapper;
         'Password' => pluginApp(SoapVarWrapper::class, [$pass, XSD_STRING, "string", $this->wss_ns, NULL, $this->wss_ns])
       );
 
-      $username_token = pluginApp(standardClass::class,[]);
-      $username_token = (object)array(
-        'UsernameToken' => pluginApp(SoapVarWrapper::class, [$auth, SOAP_ENC_OBJECT, "string", $this->wss_ns, 'UsernameToken', $this->wss_ns])
-      );
+      $UsernameToken = pluginApp(UsernameToken::class,[pluginApp(SoapVarWrapper::class, [$auth, SOAP_ENC_OBJECT, "string", $this->wss_ns, 'UsernameToken', $this->wss_ns])]);
 
       $security_sv = pluginApp(SoapVarWrapper::class, [
-        pluginApp(SoapVarWrapper::class, [$username_token, SOAP_ENC_OBJECT, NULL, $this->wss_ns, 'UsernameToken', $this->wss_ns]),
+        pluginApp(SoapVarWrapper::class, [$UsernameToken, SOAP_ENC_OBJECT, NULL, $this->wss_ns, 'UsernameToken', $this->wss_ns]),
       SOAP_ENC_OBJECT, NULL, $this->wss_ns, 'Security', $this->wss_ns]);
 	    parent::__construct($this->wss_ns, 'Security', $security_sv, false);
 	}
