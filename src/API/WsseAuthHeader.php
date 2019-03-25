@@ -17,15 +17,6 @@ use  HelloWorld\API\SoapHeaderWrapper;
 	private $wss_ns = 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd';
 	private $wsu_ns = 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd';
 	public function __construct($user, $pass, $nspace) {
-	//    $created = gmdate('Y-m-d\TH:i:s\Z');
-      //$UsernameFill = pluginApp(SoapVarWrapper::class, [$user, XSD_STRING, NULL, $this->wss_ns, NULL, $this->wss_ns]);
-      //$PasswordFill = pluginApp(SoapVarWrapper::class, [$pass, XSD_STRING, NULL, $this->wss_ns, NULL, $this->wss_ns]);
-//      $CreatedFill = pluginApp(SoapVarWrapper::class, [$created, XSD_STRING, NULL, $this->wss_ns, NULL, $this->wsu_ns]);
-
-//	    $auth = pluginApp(AuthentificationType::class, [$UsernameFill, $PasswordFill, $CreatedFill]);
-//      $auth = pluginApp(AuthentificationType::class, [$user, $pass, $created]);
-
-      //$auth = pluginApp(AuthentificationType::class, [$UsernameFill, $PasswordFill]);
       $auth = pluginApp(standardClass::class,[]);
       $auth = (object)array(
         'Username' => pluginApp(SoapVarWrapper::class, [$user, XSD_STRING, "string", $this->wss_ns, NULL, $this->wss_ns]),
