@@ -20,8 +20,8 @@ use  HelloWorld\API\SoapHeaderWrapper;
 	public function __construct($user, $pass, $nspace) {
       $auth = pluginApp(standardClass::class,[]);
       $auth = (object)array(
-        'Username' => $user,
-        'Password' => $pass
+        'Username xmlns="'.$this->wss_ns.'"' => $user,
+        'Password xmlns="'.$this->wss_ns.'"' => $pass
       );
 
       $username_token = pluginApp(standardClass::class,[]);
