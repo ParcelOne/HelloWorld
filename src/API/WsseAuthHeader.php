@@ -28,41 +28,19 @@ use  HelloWorld\API\SoapHeaderWrapper;
       //$auth = pluginApp(AuthentificationType::class, [$UsernameFill, $PasswordFill]);
       $auth = pluginApp(standardClass::class,[]);
       $auth = (object)array(
-        $nspace.'Username' => $user,
-        $nspace.'Password' => $pass
+        'Username' => pluginApp(SoapVarWrapper::class, [$user, XSD_STRING, "string", $this->wss_ns, NULL, $this->wss_ns]),
+        'Password' => pluginApp(SoapVarWrapper::class, [$pass, XSD_STRING, "string", $this->wss_ns, NULL, $this->wss_ns])
       );
-      //$auth->Username = $user;
-      //$auth->Password = $pass;
-      //$auth->Username = pluginApp(SoapVarWrapper::class, [$user, XSD_STRING, NULL, $this->wss_ns, NULL, $this->wss_ns]);
-      //$auth->Password = pluginApp(SoapVarWrapper::class, [$pass, XSD_STRING, NULL, $this->wss_ns, NULL, $this->wss_ns]);
-      //$username_token = pluginApp(SoapHeaderWrapper::class, [$this->wss_ns, 'UsernameToken', $auth]);
 
       $username_token = pluginApp(standardClass::class,[]);
-	    //$username_token->UsernameToken = pluginApp(SoapVarWrapper::class, [$auth, SOAP_ENC_OBJECT, NULL, $this->wss_ns, 'UsernameToken', $this->wss_ns]);
-
-      //$username_token->UsernameToken = $auth;
       $username_token = (object)array(
-        $nspace.'UsernameToken' => $auth
+        'UsernameToken' => new SoapVar($auth, SOAP_ENC_OBJECT, "string", $this->wss_ns, 'UsernameToken', $this->wss_ns)
       );
 
-
-      //$username_token = pluginApp(AuthentificationToken::class, [pluginApp(SoapVarWrapper::class, [$auth, SOAP_ENC_OBJECT, NULL, $this->wss_ns, 'UsernameToken', $this->wss_ns])]);
-      //$username_token = pluginApp(AuthentificationToken::class, [pluginApp(SoapVarWrapper::class, [$auth, SOAP_ENC_OBJECT, NULL, $this->wss_ns, 'UsernameToken', $this->wss_ns])]);
-	    //$username_token->UsernameToken = pluginApp(SoapVarWrapper::class, [$auth, SOAP_ENC_OBJECT, NULL, $this->wss_ns, 'UsernameToken', $this->wss_ns]);
-
-      //$security_sv = pluginApp(SoapVarWrapper::class, [
-	      //  pluginApp(SoapVarWrapper::class, [$username_token, SOAP_ENC_OBJECT, NULL, $this->wss_ns, 'UsernameToken', $this->wss_ns]),
-	      //  SOAP_ENC_OBJECT, NULL, $this->wss_ns, 'Security', $this->wss_ns]);
-
-      $security_sv = pluginApp(standardClass::class,[]);
-      $security_sv->Security = $username_token;
-      //parent::SoapHeader($this->wss_ns, 'Security', $username_token, true);
-	    parent::__construct($this->wss_ns, 'Security', object(
-        'UsernameToken' => object(
-          'Username' => $user,
-          'Password' => $pass
-        )
-      ), false);
+      $security_sv = pluginApp(SoapVarWrapper::class, [
+        pluginApp(SoapVarWrapper::class, [$username_token, SOAP_ENC_OBJECT, NULL, $this->wss_ns, 'UsernameToken', $this->wss_ns]),
+      SOAP_ENC_OBJECT, NULL, $this->wss_ns, 'Security', $this->wss_ns]);
+	    parent::__construct($this->wss_ns, 'Security', $security_sv, false);
 	}
 }
 ?>
