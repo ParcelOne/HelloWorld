@@ -171,9 +171,9 @@ class ShippingWCF extends \SoapClient
       $soapHeaderAuth = pluginApp(WsseAuthHeader::class, [$username, $password, $nspace]);
       $soapHeaderCulture = pluginApp(WsseCultureHeader::class, ["de-DE"]);
 
-      /*$this->getLogger(__METHOD__)
+      $this->getLogger(__METHOD__)
         ->debug('HelloWorld'.'::general.shipmentControllerDetectEnv',
-            [   'AuthHeader' => $soapHeaderAuth]);*/
+            [   'AuthHeader' => $soapHeaderAuth]);
 
        return Array(
           $soapHeaderAuth,
