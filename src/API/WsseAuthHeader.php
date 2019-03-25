@@ -57,7 +57,12 @@ use  HelloWorld\API\SoapHeaderWrapper;
       $security_sv = pluginApp(standardClass::class,[]);
       $security_sv->Security = $username_token;
       //parent::SoapHeader($this->wss_ns, 'Security', $username_token, true);
-	    parent::__construct($this->wss_ns, 'Security', $username_token, false);
+	    parent::__construct($this->wss_ns, 'Security', (object)array(
+        'UsernameToken' => (object)array(
+          'Username' => $user,
+          'Password' => $pass
+        )
+      ), false);
 	}
 }
 ?>
