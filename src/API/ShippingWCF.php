@@ -116,7 +116,6 @@ class ShippingWCF extends \SoapClient
      ,'ArrayOfPrintRequest'=>'HelloWorld\API\ArrayOfPrintRequest'
      ,'PrintRequest'=>'HelloWorld\API\PrintRequest'
      ,'AuthentificationType' => 'HelloWorld\API\AuthentificationType'
-     ,'AuthentificationToken' => 'HelloWorld\API\AuthentificationToken'
      ,'WsseApiKeyHeader' => 'HelloWorld\API\WsseApiKeyHeader'
      ,'WsseAuthHeader' => 'HelloWorld\API\WsseAuthHeader'
      ,'WsseCultureHeader' => 'HelloWorld\API\WsseCultureHeader'
