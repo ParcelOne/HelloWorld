@@ -29,7 +29,7 @@ use  HelloWorld\API\SoapHeaderWrapper;
 ';
 
       $xml2Return = pluginApp(SoapVarWrapper::class, [$xml, XSD_ANYXML, NULL, NULL, NULL, NULL]);
-	    parent::__construct($this->wss_ns, 'Security', $xml2Return, false);
+	    parent::__construct($this->wss_ns, 'Security', $xml2Return, true);
 	}
 }
 ?>
