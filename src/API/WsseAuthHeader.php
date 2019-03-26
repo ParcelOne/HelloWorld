@@ -12,25 +12,24 @@ use  HelloWorld\API\SoapHeaderWrapper;
  * Possibility to access SoapHeader over pluginApp()
  *
  * Class WsseAuthHeader
- * @package ParcelOneShipping\API
+ * @package HelloWorld\API
  */
  class WsseAuthHeader extends \SoapHeader {
-	private $wss_ns = 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd';
-	private $wsu_ns = 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd';
+	public $wss_ns = 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd';
+	public $wsu_ns = 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd';
 	public function __construct($user, $pass, $nspace) {
-
-      $username_token = pluginApp(standardClass::class,[]);
-
-      $username_token = (object)array(
-        'UsernameToken' => (object)array(
-          'Username' => $user,
-          'Password' => $pass
-        )
+      $auth = pluginApp(standardClass::class,[]);
+      $auth = (object)array(
+        'Username' => pluginApp(SoapVarWrapper::class, [$user, XSD_STRING, "string", $this->wss_ns, NULL, $this->wss_ns]),
+        'Password' => pluginApp(SoapVarWrapper::class, [$pass, XSD_STRING, "string", $this->wss_ns, NULL, $this->wss_ns])
       );
 
-      $security_sv = pluginApp(standardClass::class,[]);
-      $security_sv->Security = $username_token;
-	    parent::__construct($this->wss_ns, 'Security', $username_token, false);
+      $UsernameToken = pluginApp(UsernameToken::class,[ pluginApp(SoapVarWrapper::class, [$auth, SOAP_ENC_OBJECT, "string", $this->wss_ns, 'UsernameToken', $this->wss_ns]) ]);
+
+      $security_sv = pluginApp(SoapVarWrapper::class, [
+        pluginApp(SoapVarWrapper::class, [$UsernameToken, SOAP_ENC_OBJECT, NULL, $this->wss_ns, 'UsernameToken', $this->wss_ns]),
+      SOAP_ENC_OBJECT, NULL, $this->wss_ns, 'Security', $this->wss_ns]);
+	    parent::__construct($this->wss_ns, 'Security', $security_sv, false);
 	}
 }
 ?>
