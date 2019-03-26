@@ -27,7 +27,7 @@ use  HelloWorld\API\SoapHeaderWrapper;
       $username_token = pluginApp(standardClass::class,[]);
 
       $username_token = (object)array(
-        'UsernameToken xmlns="'.$this->wss_ns.'"' => $auth
+        'UsernameToken xmlns="'.$this->$wsu_ns.'"' => $auth
       );
 
       $security_sv = pluginApp(standardClass::class,[]);
