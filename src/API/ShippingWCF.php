@@ -155,6 +155,7 @@ class ShippingWCF extends \SoapClient
        $options['cache_wsdl']  = WSDL_CACHE_NONE;
        $options['compression']  = SOAP_COMPRESSION_ACCEPT | SOAP_COMPRESSION_GZIP;
        $options['connection_timeout']  = 60;
+       $options['keep_alive']  = true;
 
 
 
